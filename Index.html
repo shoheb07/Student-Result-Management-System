@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Result Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Student Result Management System</h1>
+
+    <a href="/add" class="btn">Add Student</a>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Sub1</th>
+            <th>Sub2</th>
+            <th>Sub3</th>
+            <th>Total</th>
+            <th>Percentage</th>
+            <th>Grade</th>
+            <th>Action</th>
+        </tr>
+
+        {% for student in students %}
+        <tr>
+            <td>{{ student[0] }}</td>
+            <td>{{ student[1] }}</td>
+            <td>{{ student[2] }}</td>
+            <td>{{ student[3] }}</td>
+            <td>{{ student[4] }}</td>
+            <td>{{ student[5] }}</td>
+            <td>{{ student[6] }}</td>
+            <td>{{ "%.2f"|format(student[7]) }}%</td>
+            <td>{{ student[8] }}</td>
+            <td>
+                <a href="/delete/{{ student[0] }}" class="delete-btn">
+                    Delete
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>
